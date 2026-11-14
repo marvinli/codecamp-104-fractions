@@ -667,9 +667,31 @@
       }, 5600);
     }
 
+    /* Steps 6-9: two challenge questions over the finished picture (question, then answer). */
+    function challenge(n, dir) {
+      const c = n < 8 ? 1 : 2, answered = n % 2 === 1;
+      ui.chal.className = `sf-chal panel show c${c}` + (answered ? ' ans' : '');
+      ui.rungs.forEach((r, i) => r.classList.toggle('sf-pick', c === 1 && answered && (i === 2 || i === 3)));
+      if (dir > 0) {
+        Deck.bump(answered ? ui.chalAns[c - 1] : ui.chal, 'anim-pop');
+        Sound.sfx(answered ? 'fanfare' : 'sparkle');
+        if (answered && c === 2) Deck.confetti(ui.slide, 90);
+        Sound.voice(`tri/chal-${c}${answered ? 'a' : ''}`);
+      }
+    }
+
     function show(n, dir) {
       T.clear();
       ui.falls.innerHTML = ''; ui.lines.innerHTML = '';
+      if (n >= 6) {
+        drawTri(5); setCards(5); setLadder(5); eqStatic(5); setHead(5);
+        ui.punch.classList.remove('show');
+        const prev = shown;
+        shown = n;
+        return challenge(n, dir > 0 && n === prev + 1 ? 1 : 0);
+      }
+      ui.chal.className = 'sf-chal panel';
+      ui.rungs.forEach(r => r.classList.remove('sf-pick'));
       setHead(n);
       const anim = dir > 0 && n === shown + 1 && n > 0;
       shown = n;
@@ -684,7 +706,7 @@
     }
 
     Deck.add({
-      id: 'sierpinski-fractions', music: 'space', title: 'How Much Is Left?', theme: 'sx-space sf-slide', steps: 6,
+      id: 'sierpinski-fractions', music: 'space', title: 'How Much Is Left?', theme: 'sx-space sf-slide', steps: 10,
       build(root) {
         ui.slide = root;
         stars(root, 120);
@@ -726,6 +748,31 @@
           el('span', { class: 'sf-ri', text: i }),
           i === 0 ? el('span', { class: 'sf-one', text: '1' }) : frac(nn, D[i])));
         root.append(el('div', { class: 'sf-ladder' }, el('div', { class: 'kicker', text: 'Filled' }), ...ui.rungs));
+
+        // challenges (steps 6-9)
+        const op = t => el('span', { class: 'sf-op', text: t });
+        ui.chalAns = [
+          el('div', { class: 'sf-chal-a' },
+            el('div', { class: 'sf-chal-row' }, el('b', { text: 'Step 2:' }), frac(9, 16), op('='), frac(36, 64), op('>'), frac(32, 64), el('span', { class: 'sf-chal-note', text: 'still more than half' })),
+            el('div', { class: 'sf-chal-row' }, el('b', { text: 'Step 3:' }), frac(27, 64), op('<'), frac(32, 64), el('span', { class: 'sf-chal-note gold', text: 'less than half!' })),
+            el('div', { class: 'sf-chal-big', html: 'STEP <span>3</span>' })),
+          el('div', { class: 'sf-chal-a' },
+            el('div', { class: 'sf-chal-row big' }, frac(1, 4), op('×'), frac(1, 4), op('='), frac(1, 16, 'gold')),
+            el('div', { class: 'sf-chal-big', html: 'About <span>1/16</span>!' }),
+            el('div', { class: 'sf-chal-note', html: 'Exactly: 59,049 out of 1,048,576. That\'s about 1/18. Close!' })),
+        ];
+        ui.chal = el('div', { class: 'sf-chal panel' },
+          el('div', { class: 'sf-chal-q1' },
+            el('div', { class: 'sf-chal-k', text: '★ CHALLENGE ★' }),
+            el('div', { class: 'sf-chal-q', html: 'At which step did the filled part first drop <b>below one half</b>?' }),
+            el('div', { class: 'sf-chal-hint', text: 'Hint: what is one half in sixty-fourths?  Use the ladder →' }),
+            ui.chalAns[0]),
+          el('div', { class: 'sf-chal-q2' },
+            el('div', { class: 'sf-chal-k', text: '★ BONUS CHALLENGE ★' }),
+            el('div', { class: 'sf-chal-q', html: 'About how much would be left after <b>10 steps</b>?' }),
+            el('div', { class: 'sf-chal-hint', text: 'Hint: after 5 steps, about 1/4 is left. 10 steps = 5 steps, then 5 more!' }),
+            ui.chalAns[1]));
+        root.append(ui.chal);
       },
       enter(n) { shown = -1; },
       step(n, dir) { show(n, dir); },

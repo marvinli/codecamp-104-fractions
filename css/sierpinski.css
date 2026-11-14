@@ -390,3 +390,29 @@
 .sd-face .sd-label { margin-top: 40px; }
 
 .sr-a.s0 .sr-dict { transform: translate(-500px, 390px) scale(1.35) rotate(-2deg); }
+
+/* How Much Is Left? challenges (steps 6-9) */
+.sf-chal {
+  position: absolute; left: 862px; top: 150px; width: 740px; min-height: 730px; padding: 30px 34px; z-index: 6;
+  border-color: var(--violet); background: #1c0d40; opacity: 0; transform: scale(.85); pointer-events: none;
+  transition: opacity .35s, transform .45s cubic-bezier(.3, 1.5, .5, 1); display: flex; flex-direction: column;
+}
+.sf-chal.show { opacity: 1; transform: none; }
+.sf-chal-q1, .sf-chal-q2 { display: none; flex-direction: column; flex: 1; }
+.sf-chal.c1 .sf-chal-q1, .sf-chal.c2 .sf-chal-q2 { display: flex; }
+.sf-chal-k { font-family: var(--display); font-size: 30px; letter-spacing: 3px; color: var(--pink); text-align: center; }
+.sf-chal-q { font-size: 50px; font-weight: 700; line-height: 1.15; margin-top: 14px; text-align: center; }
+.sf-chal-q b { color: var(--gold); }
+.sf-chal-hint { font-family: var(--hand); font-size: 34px; color: #cdbbff; text-align: center; margin-top: 16px; }
+.sf-chal-a { margin-top: auto; padding-top: 18px; border-top: 4px dashed rgba(255, 255, 255, .2); opacity: 0; transition: opacity .4s; }
+.sf-chal.ans .sf-chal-a { opacity: 1; }
+.sf-chal-row { display: flex; align-items: center; gap: 14px; font-size: 46px; margin: 10px 0; }
+.sf-chal-row b { font-family: var(--display); font-size: 26px; font-weight: 400; color: #cdbbff; min-width: 108px; }
+.sf-chal-row.big { justify-content: center; font-size: 74px; }
+.sf-chal-row .gold { color: var(--gold); text-shadow: 0 0 24px rgba(255, 201, 60, .6); }
+.sf-chal-note { font-family: var(--hand); font-size: 32px; color: #e8dcff; }
+.sf-chal-note.gold { color: var(--gold); }
+.sf-chal-a > .sf-chal-note { text-align: center; margin-top: 6px; }
+.sf-chal-big { font-family: var(--display); font-size: 52px; text-align: center; margin-top: 8px; color: #fff; }
+.sf-chal-big span { color: var(--gold); text-shadow: 0 0 24px rgba(255, 201, 60, .7); }
+.sf-rung.sf-pick { border-color: var(--pink); background: rgba(255, 111, 181, .18); box-shadow: 0 0 24px rgba(255, 111, 181, .5); }

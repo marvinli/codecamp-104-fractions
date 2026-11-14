@@ -106,5 +106,49 @@
   {
     "key": "ledger/negative",
     "text": "Negative pieces? We do not do debt in this office."
+  },
+  {
+    "key": "ledger/au-intro",
+    "text": "Drawing fractions is child's play. Now, the audit. Five cases. Show your work."
+  },
+  {
+    "key": "ledger/au-q1",
+    "text": "Case one. Which is larger: five eighths, or two thirds? Think carefully. I am watching."
+  },
+  {
+    "key": "ledger/au-a1",
+    "text": "Two thirds. Larger by one twenty-fourth. A tiny margin, but money is money."
+  },
+  {
+    "key": "ledger/au-q2",
+    "text": "Case two. Someone claims six eighths equals three quarters. Prove it. I am very hard to convince."
+  },
+  {
+    "key": "ledger/au-a2",
+    "text": "Each quarter is two eighths. Double the top, double the bottom. Approved."
+  },
+  {
+    "key": "ledger/au-q3",
+    "text": "Case three. The knight claims seven quarters of a heart. That is more than one heart! Explain."
+  },
+  {
+    "key": "ledger/au-a3",
+    "text": "One whole heart, and three quarters of another. Most irregular, but correct."
+  },
+  {
+    "key": "ledger/au-q4",
+    "text": "Case four. Someone ate one quarter of my pie. Then three eighths more. How much is left?"
+  },
+  {
+    "key": "ledger/au-a4",
+    "text": "Five eighths eaten. Three eighths left. I shall be filing a complaint."
+  },
+  {
+    "key": "ledger/au-q5",
+    "text": "Case five. I drink two fifths of a boba every day. How much do I drink in three days?"
+  },
+  {
+    "key": "ledger/au-a5",
+    "text": "Six fifths. One whole boba, and one fifth more. I regret nothing."
   }
 ]

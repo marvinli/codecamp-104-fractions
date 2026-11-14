@@ -1,7 +1,38 @@
 [
-  { "key": "tri/whoa", "text": "Whoa! We zoomed way in... and it looks exactly like the whole thing again!" },
-  { "key": "tri/times-up", "text": "Time's up! Pencils down, artists!" },
-  { "key": "tri/quarter", "text": "After just five steps, only about one quarter is left. Keep going forever, and it's almost nothing... but it's still a triangle!" },
-  { "key": "tri/forever", "text": "No stopping rule? Then it goes on forever... and ever... and ever... and ever..." },
-  { "key": "tri/cat", "text": "It's a cat, holding a picture of a cat, holding a picture of a cat, holding a picture of a cat..." }
+  {
+    "key": "tri/whoa",
+    "text": "Whoa! We zoomed way in... and it looks exactly like the whole thing again!"
+  },
+  {
+    "key": "tri/times-up",
+    "text": "Time's up! Pencils down, artists!"
+  },
+  {
+    "key": "tri/quarter",
+    "text": "After just five steps, only about one quarter is left. Keep going forever, and it's almost nothing... but it's still a triangle!"
+  },
+  {
+    "key": "tri/forever",
+    "text": "No stopping rule? Then it goes on forever... and ever... and ever... and ever..."
+  },
+  {
+    "key": "tri/cat",
+    "text": "It's a cat, holding a picture of a cat, holding a picture of a cat, holding a picture of a cat..."
+  },
+  {
+    "key": "tri/chal-1",
+    "text": "Challenge! At which step did the filled part first drop below one half?"
+  },
+  {
+    "key": "tri/chal-1a",
+    "text": "Step three! Twenty-seven sixty-fourths is less than thirty-two sixty-fourths, and that's one half."
+  },
+  {
+    "key": "tri/chal-2",
+    "text": "Bonus challenge! About how much would be left after ten steps?"
+  },
+  {
+    "key": "tri/chal-2a",
+    "text": "About one sixteenth! A quarter of a quarter. Tiny!"
+  }
 ]

@@ -1,0 +1,99 @@
+/* Ledger's Audit (slides/audit.js). Ledger, his bubble and the office reuse the lg- styles from ledger.css. */
+
+/* clipboard */
+.au-board {
+  position: absolute; left: 590px; top: 26px; width: 1290px; height: 936px; z-index: 3; border-radius: 34px;
+  background: linear-gradient(135deg, #b98245, #8a5428 55%, #6b3e1a);
+  border: 6px solid #2e1906;
+  box-shadow: 0 26px 50px rgba(0, 0, 0, .55), inset 0 4px 0 rgba(255, 220, 160, .45), inset 0 -5px 0 rgba(0, 0, 0, .3);
+}
+.au-clip {
+  position: absolute; left: 50%; top: -18px; width: 300px; height: 74px; margin-left: -150px; z-index: 3; border-radius: 16px 16px 24px 24px;
+  background: linear-gradient(to bottom, #f1f2f6, #a9adbb 60%, #7c8090); border: 5px solid #3a3d48;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, .45), inset 0 3px 0 rgba(255, 255, 255, .8);
+}
+.au-clip::after { content: ""; position: absolute; left: 110px; right: 110px; top: 14px; height: 18px; border-radius: 9px; background: #3a3d48; }
+.au-paper {
+  position: absolute; left: 30px; right: 30px; top: 40px; bottom: 30px; border-radius: 6px; overflow: hidden; color: var(--ink);
+  background:
+    linear-gradient(rgba(70, 130, 200, .1) 2px, transparent 2px) 0 0 / 100% 40px,
+    radial-gradient(ellipse at 30% 20%, #fffef8, #f8efd9 85%);
+  box-shadow: inset 0 0 40px rgba(150, 110, 40, .2), 0 3px 0 rgba(0, 0, 0, .25);
+}
+.au-paper::before { content: ""; position: absolute; left: 64px; top: 0; bottom: 0; width: 3px; background: rgba(255, 79, 94, .35); }
+.au-paper.au-in { animation: auIn .55s cubic-bezier(.3, 1.4, .5, 1); }
+@keyframes auIn { from { transform: translateY(-30px) rotate(-1.2deg); opacity: .2; } }
+.au-paper.au-nudge { animation: auNudge .4s ease-out; }
+@keyframes auNudge { 40% { transform: translateY(6px); } }
+
+.au-head { position: absolute; left: 90px; right: 34px; top: 34px; display: flex; justify-content: space-between; align-items: center; }
+.au-title { font-family: var(--stuffy); font-weight: 700; font-size: 22px; letter-spacing: 6px; color: #6b5a3a; }
+.au-caseno {
+  font-family: var(--display); font-size: 24px; letter-spacing: 2px; color: #fff; background: #7a1f2a;
+  padding: 6px 18px 7px; border-radius: 999px; box-shadow: 0 4px 0 #4a0f18;
+}
+.au-q {
+  position: absolute; left: 90px; right: 40px; top: 96px; min-height: 120px;
+  font-family: var(--stuffy); font-size: 44px; line-height: 1.3; color: #2a1a10;
+}
+.au-q b { color: #7a1f2a; }
+.au-f { font-family: var(--body); font-weight: 700; font-size: 1em; margin: 0 .12em; vertical-align: middle; }
+.au-q .au-f { font-size: 1.05em; color: #7a1f2a; }
+
+.au-vis { position: absolute; left: 50px; right: 30px; top: 262px; height: 420px; }
+.au-vis-in { position: absolute; inset: 0; }
+.au-svg { width: 100%; height: 100%; overflow: visible; }
+.au-sfrac text { font-family: var(--body); font-weight: 700; }
+.au-eq { font-family: var(--body); font-weight: 700; font-size: 44px; fill: var(--ink); }
+.au-note { font-family: var(--hand); font-size: 40px; fill: #c4202f; }
+.au-note.good { fill: #1a8a40; }
+.au-small { font-family: var(--display); font-size: 24px; letter-spacing: 1px; fill: #6b5a3a; }
+.au-count { font-family: var(--display); font-size: 84px; fill: #ff2d55; }
+.au-leg { font-family: var(--hand); font-size: 46px; fill: var(--ink); }
+
+/* reveal mechanics */
+.au-x { opacity: 0; transition: opacity .5s; }
+.au-x.on { opacity: 1; }
+.au-fill { transform: scaleX(0); transform-box: fill-box; transform-origin: left center; transition: transform 1s cubic-bezier(.3, 1.15, .4, 1); }
+.au-fill.on { transform: scaleX(var(--v)); }
+.au-pulse.on { animation: auPulse 1s ease-in-out infinite alternate; }
+@keyframes auPulse { to { opacity: .45; } }
+.au-piece { opacity: 0; transform: scale(.4); transform-box: fill-box; transform-origin: center; transition: opacity .25s, transform .35s cubic-bezier(.3, 1.6, .5, 1); }
+.au-piece.on { opacity: 1; transform: none; }
+.au-slice { fill: #ffc93c; stroke: var(--ink); stroke-width: 4; stroke-linejoin: round; transition: fill .45s, transform .5s cubic-bezier(.3, 1.5, .5, 1), opacity .45s; }
+.au-slice.ate-a { fill: rgba(34, 211, 197, .18); stroke: #0e9488; stroke-dasharray: 12 8; transform: translate(var(--dx), var(--dy)); }
+.au-slice.ate-b { fill: rgba(255, 111, 181, .18); stroke: #d0307a; stroke-dasharray: 12 8; transform: translate(var(--dx), var(--dy)); }
+.au-slice.left { fill: #ff9a3c; filter: drop-shadow(0 0 10px rgba(255, 154, 60, .9)); }
+.au-sw { stroke: var(--ink); stroke-width: 4; }
+.au-sw.a { fill: rgba(34, 211, 197, .35); stroke: #0e9488; stroke-dasharray: 8 5; }
+.au-sw.b { fill: rgba(255, 111, 181, .35); stroke: #d0307a; stroke-dasharray: 8 5; }
+.au-sw.c { fill: #ff9a3c; }
+.au-tea { fill: transparent; transition: fill .3s; }
+.au-tea.on { fill: #c8915a; }
+.au-hero { position: absolute; right: -10px; top: 0; width: 250px; height: 250px; object-fit: contain; filter: drop-shadow(0 8px 10px rgba(0, 0, 0, .3)); }
+
+/* findings strip */
+.au-ans {
+  position: absolute; left: 70px; right: 30px; bottom: 26px; min-height: 120px; padding: 16px 300px 18px 26px; border-radius: 18px;
+  background: #e9f6ea; border: 4px solid #1a8a40; box-shadow: 0 6px 0 rgba(26, 138, 64, .3);
+  opacity: 0; transform: translateY(30px); transition: opacity .4s, transform .5s cubic-bezier(.3, 1.4, .5, 1);
+}
+.au-ans.show { opacity: 1; transform: none; }
+.au-ans-h { font-family: var(--display); font-size: 20px; letter-spacing: 4px; color: #1a8a40; }
+.au-ans-b { font-family: var(--body); font-weight: 600; font-size: 33px; line-height: 1.55; margin-top: 2px; }
+.au-ans-b b { color: #1a6a30; }
+.au-ans .au-f { font-size: .95em; }
+.au-stamp {
+  position: absolute; right: 26px; top: 50%; margin-top: -38px; padding: 8px 18px; transform: rotate(-9deg); opacity: 0;
+  font-family: var(--display); font-size: 36px; letter-spacing: 3px; color: rgba(26, 138, 64, .95);
+  border: 6px solid rgba(26, 138, 64, .9); border-radius: 12px; mix-blend-mode: multiply;
+}
+.au-stamp.slam { opacity: 1; animation: lgSlam .45s cubic-bezier(.5, 0, .5, 1.6) .25s both; }
+
+/* cover */
+.au-paper.cover .au-q, .au-paper.cover .au-ans { display: none; }
+.au-cover { position: absolute; inset: -150px 40px 0 60px; display: flex; flex-direction: column; justify-content: center; }
+.au-cover-t { font-family: var(--stuffy); font-weight: 700; font-size: 120px; color: #7a1f2a; line-height: 1; }
+.au-cover-s { font-family: var(--stuffy); font-style: italic; font-size: 44px; color: #4a3a20; margin: 14px 0 34px; }
+.au-cases { margin: 0; padding-left: 60px; font-family: var(--stuffy); font-size: 40px; line-height: 1.6; color: #2a1a10; }
+.au-cases li::marker { font-family: var(--display); color: #7a1f2a; }
