@@ -1,0 +1,254 @@
+[
+ {
+  "key": "halvina/intro",
+  "text": "Think of a secret number from one to one thousand. Write it down. Do NOT tell me!",
+  "say": "[grandly] Think of a secret number from one to one thousand. Write it down. Do NOT tell me!"
+ },
+ {
+  "key": "halvina/ready",
+  "text": "Silence! Madame Halvina is reading your mind...",
+  "say": "[dramatically] Silence! Madame Halvina is reading your mind..."
+ },
+ {
+  "key": "halvina/think-1",
+  "text": "Hmmmmm...",
+  "say": "[mysteriously] Hmmmmm..."
+ },
+ {
+  "key": "halvina/think-2",
+  "text": "The crystal ball is cloudy...",
+  "say": "[mysteriously] The crystal ball is cloudy..."
+ },
+ {
+  "key": "halvina/think-3",
+  "text": "The spirits are whispering...",
+  "say": "[mysteriously] The spirits are whispering..."
+ },
+ {
+  "key": "halvina/think-4",
+  "text": "Ooooh, I sense something...",
+  "say": "[mysteriously] Ooooh, I sense something..."
+ },
+ {
+  "key": "halvina/less-1",
+  "text": "Less? I knew that. I was testing you."
+ },
+ {
+  "key": "halvina/less-2",
+  "text": "Lower, you say? Half the numbers: GONE!"
+ },
+ {
+  "key": "halvina/less-3",
+  "text": "Smaller! The top half vanishes!"
+ },
+ {
+  "key": "halvina/less-4",
+  "text": "Less! Farewell, big numbers!"
+ },
+ {
+  "key": "halvina/greater-1",
+  "text": "Greater? Naturally. I was just warming up."
+ },
+ {
+  "key": "halvina/greater-2",
+  "text": "Higher! Away with the bottom half!"
+ },
+ {
+  "key": "halvina/greater-3",
+  "text": "Bigger! Half the numbers: poof!"
+ },
+ {
+  "key": "halvina/greater-4",
+  "text": "Greater! Goodbye, small numbers!"
+ },
+ {
+  "key": "halvina/win-1",
+  "text": "I KNEW IT! Madame Halvina is never wrong!",
+  "say": "[triumphantly] I KNEW IT! Madame Halvina is never wrong!"
+ },
+ {
+  "key": "halvina/win-2",
+  "text": "Behold! Your number is revealed!",
+  "say": "[triumphantly] Behold! Your number is revealed!"
+ },
+ {
+  "key": "halvina/win-3",
+  "text": "Ha HA! The crystal ball never lies!",
+  "say": "[triumphantly] Ha HA! The crystal ball never lies!"
+ },
+ {
+  "key": "halvina/lie",
+  "text": "You LIED to Madame Halvina! Your answers do not add up!",
+  "say": "[outraged] You LIED to Madame Halvina! Your answers do not add up!"
+ },
+ {
+  "key": "halvina/deep-1",
+  "text": "Then it must be... THIS!",
+  "say": "[dramatically] Then it must be... THIS!"
+ },
+ {
+  "key": "halvina/deep-2",
+  "text": "Is it... this one?",
+  "say": "[dramatically] Is it... this one?"
+ },
+ {
+  "key": "halvina/deep-3",
+  "text": "My ball says... this!",
+  "say": "[dramatically] My ball says... this!"
+ },
+ {
+  "key": "halvina/num-31",
+  "text": "Is it 31?",
+  "say": "[dramatically] Is it... 31?"
+ },
+ {
+  "key": "halvina/num-62",
+  "text": "Is it 62?",
+  "say": "[dramatically] Is it... 62?"
+ },
+ {
+  "key": "halvina/num-93",
+  "text": "Is it 93?",
+  "say": "[dramatically] Is it... 93?"
+ },
+ {
+  "key": "halvina/num-125",
+  "text": "Is it 125?",
+  "say": "[dramatically] Is it... 125?"
+ },
+ {
+  "key": "halvina/num-156",
+  "text": "Is it 156?",
+  "say": "[dramatically] Is it... 156?"
+ },
+ {
+  "key": "halvina/num-187",
+  "text": "Is it 187?",
+  "say": "[dramatically] Is it... 187?"
+ },
+ {
+  "key": "halvina/num-218",
+  "text": "Is it 218?",
+  "say": "[dramatically] Is it... 218?"
+ },
+ {
+  "key": "halvina/num-250",
+  "text": "Is it 250?",
+  "say": "[dramatically] Is it... 250?"
+ },
+ {
+  "key": "halvina/num-281",
+  "text": "Is it 281?",
+  "say": "[dramatically] Is it... 281?"
+ },
+ {
+  "key": "halvina/num-312",
+  "text": "Is it 312?",
+  "say": "[dramatically] Is it... 312?"
+ },
+ {
+  "key": "halvina/num-343",
+  "text": "Is it 343?",
+  "say": "[dramatically] Is it... 343?"
+ },
+ {
+  "key": "halvina/num-375",
+  "text": "Is it 375?",
+  "say": "[dramatically] Is it... 375?"
+ },
+ {
+  "key": "halvina/num-406",
+  "text": "Is it 406?",
+  "say": "[dramatically] Is it... 406?"
+ },
+ {
+  "key": "halvina/num-437",
+  "text": "Is it 437?",
+  "say": "[dramatically] Is it... 437?"
+ },
+ {
+  "key": "halvina/num-468",
+  "text": "Is it 468?",
+  "say": "[dramatically] Is it... 468?"
+ },
+ {
+  "key": "halvina/num-500",
+  "text": "Is it 500?",
+  "say": "[dramatically] Is it... 500?"
+ },
+ {
+  "key": "halvina/num-531",
+  "text": "Is it 531?",
+  "say": "[dramatically] Is it... 531?"
+ },
+ {
+  "key": "halvina/num-562",
+  "text": "Is it 562?",
+  "say": "[dramatically] Is it... 562?"
+ },
+ {
+  "key": "halvina/num-593",
+  "text": "Is it 593?",
+  "say": "[dramatically] Is it... 593?"
+ },
+ {
+  "key": "halvina/num-625",
+  "text": "Is it 625?",
+  "say": "[dramatically] Is it... 625?"
+ },
+ {
+  "key": "halvina/num-656",
+  "text": "Is it 656?",
+  "say": "[dramatically] Is it... 656?"
+ },
+ {
+  "key": "halvina/num-687",
+  "text": "Is it 687?",
+  "say": "[dramatically] Is it... 687?"
+ },
+ {
+  "key": "halvina/num-718",
+  "text": "Is it 718?",
+  "say": "[dramatically] Is it... 718?"
+ },
+ {
+  "key": "halvina/num-750",
+  "text": "Is it 750?",
+  "say": "[dramatically] Is it... 750?"
+ },
+ {
+  "key": "halvina/num-781",
+  "text": "Is it 781?",
+  "say": "[dramatically] Is it... 781?"
+ },
+ {
+  "key": "halvina/num-812",
+  "text": "Is it 812?",
+  "say": "[dramatically] Is it... 812?"
+ },
+ {
+  "key": "halvina/num-843",
+  "text": "Is it 843?",
+  "say": "[dramatically] Is it... 843?"
+ },
+ {
+  "key": "halvina/num-875",
+  "text": "Is it 875?",
+  "say": "[dramatically] Is it... 875?"
+ },
+ {
+  "key": "halvina/num-906",
+  "text": "Is it 906?",
+  "say": "[dramatically] Is it... 906?"
+ },
+ {
+  "key": "halvina/num-938",
+  "text": "Is it 938?",
+  "say": "[dramatically] Is it... 938?"
+ },
+ {
+  "key": "halvina/num-969",
+  "text": "Is it 969?",
+  "say": "[dramatically] Is it... 969?"
+ }
+]

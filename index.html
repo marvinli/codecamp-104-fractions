@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fraction Carnival</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Fredoka:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Patrick+Hand&family=Press+Start+2P&display=swap">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/oracle.css">
+<link rel="stylesheet" href="css/binary.css">
+<link rel="stylesheet" href="css/ledger.css">
+<link rel="stylesheet" href="css/sierpinski.css">
+<link rel="stylesheet" href="css/mergesort.css">
+</head>
+<body>
+<div id="viewport">
+  <div id="stage">
+    <div id="slides"></div>
+    <div id="hud">
+      <button id="prev" class="nav-btn" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><path d="M15 4 7 12l8 8" /></svg>
+      </button>
+      <div id="dots"></div>
+      <button id="next" class="nav-btn" aria-label="Next">
+        <svg viewBox="0 0 24 24"><path d="M9 4l8 8-8 8" /></svg>
+      </button>
+    </div>
+    <button id="mute" class="corner-btn" aria-label="Toggle sound" title="Sound (M)"></button>
+    <button id="fs" class="corner-btn" aria-label="Fullscreen" title="Fullscreen (F)">
+      <svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+    </button>
+  </div>
+</div>
+
+<script src="js/engine.js"></script>
+<script src="js/audio.js"></script>
+<script src="slides/oracle.js"></script>
+<script src="slides/binary.js"></script>
+<script src="slides/ledger.js"></script>
+<script src="slides/sierpinski.js"></script>
+<script src="slides/mergesort.js"></script>
+<script src="slides/finale.js"></script>
+<script>Deck.start();</script>
+</body>
+</html>

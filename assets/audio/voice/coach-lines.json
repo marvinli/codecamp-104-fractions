@@ -1,0 +1,54 @@
+[
+  {
+    "key": "coach/intro",
+    "text": "Okay team, line up! Let's merge sort, just like we did in class!"
+  },
+  {
+    "key": "coach/split",
+    "text": "Split in half! Left team, right team!"
+  },
+  {
+    "key": "coach/split-2",
+    "text": "Halves of halves! That's quarters! Split again!"
+  },
+  {
+    "key": "coach/split-3",
+    "text": "Split again! Eighths! Everybody's on their own now!"
+  },
+  {
+    "key": "coach/one",
+    "text": "Group of one? Already sorted! That's the stopping rule!"
+  },
+  {
+    "key": "coach/merge",
+    "text": "Now merge! Compare the two in front. Smaller one steps up!"
+  },
+  {
+    "key": "coach/merge-2",
+    "text": "Pairs make fours! Same rule!"
+  },
+  {
+    "key": "coach/merge-3",
+    "text": "Last merge! Two halves make a whole!"
+  },
+  {
+    "key": "coach/rest",
+    "text": "Nobody left to compare? Just walk right in!"
+  },
+  {
+    "key": "coach/done",
+    "text": "SORTED! Every single one! That is championship hustle!"
+  },
+  {
+    "key": "coach/shuffle",
+    "text": "Shuffle up! New lineup, team!"
+  },
+  {
+    "key": "coach/recap",
+    "text": "Split, split, split. Then merge, merge, merge. That's merge sort, and that's recursion!"
+  },
+  {
+    "key": "coach/finale-thanks",
+    "text": "You're computer scientists now! Give yourselves a big cheer!"
+  }
+]

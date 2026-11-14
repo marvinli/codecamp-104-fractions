@@ -1,0 +1,110 @@
+[
+  {
+    "key": "ledger/intro",
+    "text": "Good morning. I am Pennington P. Ledger the Third. Accountant."
+  },
+  {
+    "key": "ledger/tab_bar",
+    "text": "Exhibit A. A loading bar. Please contain your excitement."
+  },
+  {
+    "key": "ledger/tab_pie",
+    "text": "Behold. A circle of fiscal responsibility. Do not eat it."
+  },
+  {
+    "key": "ledger/tab_choc",
+    "text": "A rectangle, divided into equal pieces. Strictly for research."
+  },
+  {
+    "key": "ledger/tab_cats",
+    "text": "Orange cats are counted. Green cats are not. Very orderly."
+  },
+  {
+    "key": "ledger/tab_hero",
+    "text": "A hero's health, as a fraction. I find this rather violent."
+  },
+  {
+    "key": "ledger/tab_boba",
+    "text": "Liquid assets. A beverage, measured with the utmost precision."
+  },
+  {
+    "key": "ledger/tab_battery",
+    "text": "My telephone battery. Fractions tell me when to panic. Quietly."
+  },
+  {
+    "key": "ledger/tab_all",
+    "text": "Seven pictures. One number. Fractions help us see numbers."
+  },
+  {
+    "key": "ledger/zero1",
+    "text": "Zero?! Nothing at all?! This is a fiscal catastrophe!"
+  },
+  {
+    "key": "ledger/zero2",
+    "text": "Zero. The most dreadful number. Fetch my smelling salts."
+  },
+  {
+    "key": "ledger/whole1",
+    "text": "All of it! One whole! I may actually smile."
+  },
+  {
+    "key": "ledger/whole2",
+    "text": "Every piece accounted for! Best day of my entire life!"
+  },
+  {
+    "key": "ledger/half",
+    "text": "Exactly one half. Perfectly balanced. Like my checkbook."
+  },
+  {
+    "key": "ledger/tiny1",
+    "text": "A mere sliver. Technically a number. Barely."
+  },
+  {
+    "key": "ledger/tiny2",
+    "text": "Hardly anything. I have seen bigger crumbs."
+  },
+  {
+    "key": "ledger/low1",
+    "text": "Less than half. I shall make a note of that."
+  },
+  {
+    "key": "ledger/low2",
+    "text": "Under half. Mildly disappointing. Like decaf tea."
+  },
+  {
+    "key": "ledger/high1",
+    "text": "More than half. Acceptable. Mildly acceptable."
+  },
+  {
+    "key": "ledger/high2",
+    "text": "Over half. My monocle is almost impressed."
+  },
+  {
+    "key": "ledger/nearly",
+    "text": "So close to a whole. The suspense is unbearable."
+  },
+  {
+    "key": "ledger/simplify1",
+    "text": "That fraction can be simplified. How deliciously tidy."
+  },
+  {
+    "key": "ledger/simplify2",
+    "text": "Equivalent fractions! Same amount, different paperwork."
+  },
+  {
+    "key": "ledger/improper",
+    "text": "Improper! More pieces than the whole? Most irregular!"
+  },
+  {
+    "key": "ledger/divzero",
+    "text": "Zero pieces? Dividing by zero is strictly forbidden!"
+  },
+  {
+    "key": "ledger/toobig",
+    "text": "Twenty-four pieces maximum. Company policy. Very strict."
+  },
+  {
+    "key": "ledger/negative",
+    "text": "Negative pieces? We do not do debt in this office."
+  }
+]
