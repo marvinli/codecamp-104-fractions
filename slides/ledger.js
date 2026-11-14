@@ -930,7 +930,7 @@
   }
 
   Deck.add({
-    id: 'ledger',
+    id: 'ledger', music: 'office',
     title: 'Fractions at Work',
     theme: 'lg',
     build,

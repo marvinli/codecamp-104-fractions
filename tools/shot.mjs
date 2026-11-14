@@ -17,7 +17,8 @@ const errors = [];
 page.on('pageerror', e => errors.push(e.message));
 page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
 await page.goto('file://' + path.resolve('index.html') + '#' + hash, { waitUntil: 'networkidle0' });
-await new Promise(r => setTimeout(r, 700));
+await page.evaluate(() => document.getElementById('curtain')?.click()); // open the start curtain
+await new Promise(r => setTimeout(r, 1500));
 if (ev) { await page.evaluate(ev); }
 await new Promise(r => setTimeout(r, wait));
 await page.screenshot({ path: out });

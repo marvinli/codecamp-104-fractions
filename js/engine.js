@@ -4,6 +4,7 @@
  *   id         unique string
  *   title      shown in the dot tooltip
  *   theme      class added to the slide <section> (e.g. 'theme-carnival')
+ *   music      background track: assets/audio/music/<music>.mp3 (slides sharing a track play it on, uninterrupted)
  *   steps      number of builds; Next/Prev walk through steps before changing slide (default 1 = no builds)
  *   prepare(dir)       optional; called before enter, may change this.steps (e.g. from data)
  *   build(root)        called once, lazily, before the slide is first shown. root = <section class="slide">
@@ -11,8 +12,13 @@
  *   step(n, dir)       called whenever the build index changes while active (including right after enter)
  *   leave()            called when the slide stops being active: stop timers/animations here
  *
- * Keyboard: → / PageDown / Space = next, ← / PageUp = prev, M = mute, F = fullscreen, Home/End.
+ * Keyboard: → / PageDown / Space = next, ← / PageUp = prev, M = mute, B = background music, F = fullscreen, Home/End.
  * Keys are ignored while typing in an input.
+ *
+ * Deck.start({ curtain }) with a curtain element waits behind it until the first click or keypress, then opens
+ * it and shows the first slide. Browsers only allow sound after a gesture, so every voice line and the music
+ * start cleanly instead of the opening line being silently dropped. (It does not enter fullscreen: that would
+ * use up the click's permission to play sound, and lines said a moment later would be blocked. F does that.)
  */
 (function () {
   const W = 1920, H = 1080;
@@ -139,7 +145,7 @@
       next.root.classList.add('active');
       next.root.classList.remove('from-right', 'from-left');
       try { next.enter && next.enter(stepIdx, dir); } catch (e) { console.error(e); }
-      if (window.Sound) Sound.sfx('whoosh');
+      if (window.Sound) { Sound.sfx('whoosh'); Sound.music(next.music || null); }
     }
     try { next.step && next.step(stepIdx, dir); } catch (e) { console.error(e); }
     updateHud();
@@ -161,7 +167,8 @@
     return t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable);
   }
 
-  function start() {
+  function start({ curtain } = {}) {
+    let waiting = !!curtain;
     fit();
     window.addEventListener('resize', fit);
     renderDots();
@@ -170,6 +177,7 @@
     $('#fs').addEventListener('click', toggleFs);
     document.addEventListener('keydown', e => {
       if (typing(e) || e.metaKey || e.ctrlKey || e.altKey) return;
+      if (waiting) { e.preventDefault(); begin(); return; }
       const k = e.key;
       if (k === 'ArrowRight' || k === 'PageDown' || k === ' ') { e.preventDefault(); nextStep(); }
       else if (k === 'ArrowLeft' || k === 'PageUp') { e.preventDefault(); prevStep(); }
@@ -177,10 +185,22 @@
       else if (k === 'End') go(slides.length - 1);
       else if (k === 'f' || k === 'F') toggleFs();
       else if (k === 'm' || k === 'M') window.Sound && Sound.toggle();
+      else if (k === 'b' || k === 'B') window.Sound && Sound.toggleMusic();
     });
     const [id, st] = location.hash.slice(1).split('.');
-    const at = slides.findIndex(s => s.id === id);
-    go(at < 0 ? 0 : at, +st || 0, 1);
+    const at = Math.max(0, slides.findIndex(s => s.id === id));
+    function begin() {
+      if (!waiting && curtain) return;
+      waiting = false;
+      go(at, +st || 0, 1);
+      if (curtain) {
+        curtain.classList.add('open');
+        setTimeout(() => curtain.remove(), 1400);
+      }
+    }
+    if (!curtain) return begin();
+    ensureBuilt(slides[at]); // its art loads while the curtain is down
+    curtain.addEventListener('click', begin);
   }
 
   function toggleFs() {

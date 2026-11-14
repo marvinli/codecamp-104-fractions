@@ -4,11 +4,14 @@
  *   Sound.voice(key|[keys])  a character line: assets/audio/voice/<key>.mp3, a random one if given a list.
  *                            Only one voice plays at a time; a new line cuts off the old one.
  *   Sound.stopVoice()
- *   Sound.toggle()           mute/unmute (remembered per browser)
+ *   Sound.music(name|null)   background track assets/audio/music/<name>.mp3, looped; crossfades from the old one.
+ *                            It ducks under character voices, and the same name again just keeps playing.
+ *   Sound.toggle()           mute/unmute everything (remembered per browser)
+ *   Sound.toggleMusic()      background music on/off, voices and effects untouched (remembered per browser)
  */
 (function () {
-  let ctx = null, master = null, muted = false, voiceEl = null;
-  try { muted = localStorage.getItem('fc-muted') === '1'; } catch (e) {}
+  let ctx = null, master = null, muted = false, voiceEl = null, musicOn = true;
+  try { muted = localStorage.getItem('fc-muted') === '1'; musicOn = localStorage.getItem('fc-music') !== '0'; } catch (e) {}
 
   function ac() {
     if (!ctx) {
@@ -89,7 +92,8 @@
     const a = new Audio(src);
     a.volume = volume; a.playbackRate = rate;
     a.addEventListener('error', () => { cache[src] = false; });
-    a.play().catch(() => {});
+    // before the first click/keypress the browser refuses; remember so a blocked voice line can be replayed
+    a.play().catch(e => { if (e && e.name === 'NotAllowedError') a.blocked = true; });
     return a;
   }
 
@@ -102,6 +106,58 @@
   }
   function stopVoice() { if (voiceEl) { voiceEl.pause(); voiceEl = null; } }
 
+  /* ---- background music: one looping <audio> per track; a ticker eases every track's volume to its target ---- */
+  const MUSIC_VOL = 0.2, MUSIC_DUCK = 0.07, FADE_PER_SEC = 0.35;
+  const tracks = {};
+  let want = null, ticker = null, lastTick = 0, blocked = false;
+  const talking = () => !!voiceEl && !voiceEl.paused && !voiceEl.ended && !voiceEl.error;
+
+  function track(name) {
+    if (!tracks[name]) {
+      const a = new Audio('assets/audio/music/' + name + '.mp3');
+      a.loop = true; a.volume = 0; a.preload = 'auto';
+      tracks[name] = a;
+    }
+    return tracks[name];
+  }
+  function tick(now) {
+    const dt = Math.min(0.25, (now - lastTick) / 1000 || 0);
+    lastTick = now;
+    const target = muted || !musicOn ? 0 : talking() ? MUSIC_DUCK : MUSIC_VOL;
+    let busy = false;
+    for (const [name, a] of Object.entries(tracks)) {
+      const goal = name === want ? target : 0;
+      const v = a.volume + Math.sign(goal - a.volume) * Math.min(Math.abs(goal - a.volume), FADE_PER_SEC * dt);
+      a.volume = Math.max(0, Math.min(1, v));
+      if (goal > 0 && a.paused && !blocked && !a.starting) {
+        a.starting = true;
+        // browsers refuse audio before the first click/keypress; the gesture listeners below clear `blocked`
+        a.play().catch(() => { blocked = true; }).finally(() => { a.starting = false; });
+      }
+      if (goal === 0 && a.volume === 0 && !a.paused) a.pause();
+      if (!a.paused || goal > 0) busy = true;
+    }
+    ticker = busy ? requestAnimationFrame(tick) : null;
+  }
+  function kick() { if (!ticker) { lastTick = performance.now(); ticker = requestAnimationFrame(tick); } }
+  function music(name) {
+    want = name || null;
+    if (want) {
+      const a = track(want);
+      // start right away (silent, then faded in) so it counts as part of the click that changed the slide
+      if (a.paused && !muted && musicOn && !a.starting) {
+        a.starting = true;
+        a.play().catch(() => { blocked = true; }).finally(() => { a.starting = false; });
+      }
+    }
+    kick();
+  }
+  function toggleMusic() {
+    musicOn = !musicOn;
+    try { localStorage.setItem('fc-music', musicOn ? '1' : '0'); } catch (e) {}
+    paint(); kick();
+  }
+
   function paint() {
     const b = document.getElementById('mute');
     if (!b) return;
@@ -109,23 +165,36 @@
       ? '<svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg>'
       : '<svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>';
     b.classList.toggle('off', muted);
+    const mb = document.getElementById('music');
+    if (mb) {
+      mb.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>' +
+        (musicOn ? '' : '<path d="M3 3l18 18"/>') + '</svg>';
+      mb.classList.toggle('off', !musicOn);
+    }
   }
 
   function toggle() {
     muted = !muted;
     try { localStorage.setItem('fc-muted', muted ? '1' : '0'); } catch (e) {}
     if (muted) stopVoice();
-    paint();
+    paint(); kick();
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     paint();
     const b = document.getElementById('mute');
     b && b.addEventListener('click', toggle);
+    const mb = document.getElementById('music');
+    mb && mb.addEventListener('click', toggleMusic);
   });
   // Browsers only allow audio after a gesture; wake the context on the first one.
-  document.addEventListener('pointerdown', () => ac(), { once: true });
-  document.addEventListener('keydown', () => ac(), { once: true });
+  const unlock = () => {
+    ac(); blocked = false; kick();
+    // the line a character said before anyone clicked (e.g. Halvina's intro on a cold load) plays now
+    if (voiceEl && voiceEl.blocked && !muted) { voiceEl.blocked = false; voiceEl.currentTime = 0; voiceEl.play().catch(() => {}); }
+  };
+  document.addEventListener('pointerdown', unlock, { once: true });
+  document.addEventListener('keydown', unlock, { once: true });
 
-  window.Sound = { sfx, clip, voice, stopVoice, toggle, get muted() { return muted; } };
+  window.Sound = { sfx, clip, voice, stopVoice, music, toggle, toggleMusic, get muted() { return muted; }, get musicOn() { return musicOn; }, tracks };
 })();

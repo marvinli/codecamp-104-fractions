@@ -275,7 +275,7 @@
   }
 
   Deck.add({
-    id: 'oracle', title: 'Madame Halvina', theme: 'theme-oracle',
+    id: 'oracle', music: 'carnival', title: 'Madame Halvina', theme: 'theme-oracle',
     build,
     enter() { if (!root.classList.contains('playing')) sayLine('intro'); },
     leave() { Sound.stopVoice(); },

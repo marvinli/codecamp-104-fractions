@@ -75,7 +75,7 @@
   }
 
   Deck.add({
-    id: 'finale',
+    id: 'finale', music: 'finale',
     title: 'You Did It!',
     theme: 'theme-carnival',
     steps: 5,

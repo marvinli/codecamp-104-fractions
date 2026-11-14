@@ -708,7 +708,7 @@
   ];
 
   Deck.add({
-    id: 'mergesort',
+    id: 'mergesort', music: 'gym',
     title: 'Merge Sort',
     theme: 'theme-gym',
     steps: 2,

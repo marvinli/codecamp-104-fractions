@@ -27,10 +27,21 @@
         <svg viewBox="0 0 24 24"><path d="M9 4l8 8-8 8" /></svg>
       </button>
     </div>
+    <button id="music" class="corner-btn" aria-label="Toggle background music" title="Background music (B)"></button>
     <button id="mute" class="corner-btn" aria-label="Toggle sound" title="Sound (M)"></button>
     <button id="fs" class="corner-btn" aria-label="Fullscreen" title="Fullscreen (F)">
       <svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
     </button>
+    <div id="curtain">
+      <div class="cur-half l"></div><div class="cur-half r"></div>
+      <div class="cur-card">
+        <div class="cur-kicker">★ Step right up! ★</div>
+        <h1 class="cur-title">THE FRACTION<br>CARNIVAL</h1>
+        <div class="cur-sub">Binary search · Recursion · Merge sort… all with fractions!</div>
+        <button class="btn cur-go"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg>START THE SHOW</button>
+        <div class="cur-hint">or press any key · sound on! · F for fullscreen</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -42,6 +53,6 @@
 <script src="slides/sierpinski.js"></script>
 <script src="slides/mergesort.js"></script>
 <script src="slides/finale.js"></script>
-<script>Deck.start();</script>
+<script>Deck.start({ curtain: document.getElementById('curtain') });</script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 # The Fraction Carnival: 45-minute lesson plan
 
 **Audience:** advanced 4th graders (all-girls class) who are learning fractions.
-**Tool:** open `index.html` in Chrome, press **F** for fullscreen, and keep sound on (the characters talk). Press **M** to mute.
+**Tool:** open `index.html` in Chrome, press **F** for fullscreen, and keep sound on (the characters talk). Press **M** to mute everything, or **B** to turn off just the background music (voices stay on). The music ducks automatically whenever a character talks.
 **Navigation:** → / Space / clicker = next, ← = back. On slides with builds, Next reveals the next idea before it moves to the next slide.
 **Big ideas:** *divide & conquer*, *recursion*, and *fractions as a way to see numbers*.
 

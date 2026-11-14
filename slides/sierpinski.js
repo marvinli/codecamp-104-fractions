@@ -385,7 +385,7 @@
     }
 
     Deck.add({
-      id: 'sierpinski', title: 'The Sierpinski Triangle', theme: 'sx-space',
+      id: 'sierpinski', music: 'space', title: 'The Sierpinski Triangle', theme: 'sx-space',
       build(rootEl) {
         ui.slide = rootEl;
         stars(rootEl);
@@ -534,7 +534,7 @@
     function toggle() { running ? (pause(), Sound.sfx('tick')) : start(); }
 
     Deck.add({
-      id: 'sierpinski-draw', title: 'Your Turn!', theme: 'sx-space sd-slide', steps: 4,
+      id: 'sierpinski-draw', music: 'draw', title: 'Your Turn!', theme: 'sx-space sd-slide', steps: 4,
       build(root) {
         ui.slide = root;
         stars(root, 140);
@@ -684,7 +684,7 @@
     }
 
     Deck.add({
-      id: 'sierpinski-fractions', title: 'How Much Is Left?', theme: 'sx-space sf-slide', steps: 6,
+      id: 'sierpinski-fractions', music: 'space', title: 'How Much Is Left?', theme: 'sx-space sf-slide', steps: 6,
       build(root) {
         ui.slide = root;
         stars(root, 120);
@@ -1056,7 +1056,7 @@
     }
 
     Deck.add({
-      id: 'recursion', title: 'Recursion', theme: 'sx-space sr-slide', steps: 5,
+      id: 'recursion', music: 'space', title: 'Recursion', theme: 'sx-space sr-slide', steps: 5,
       build(root) {
         ui.slide = root;
         stars(root, 140);

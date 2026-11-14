@@ -74,7 +74,7 @@
     }
 
     Deck.add({
-      id: 'bs-how', title: "Halvina's Secret", theme: 'theme-bs',
+      id: 'bs-how', music: 'carnival', title: "Halvina's Secret", theme: 'theme-bs',
       steps: 11,
       prepare() {
         game = loadGame();
@@ -168,7 +168,7 @@
     }
 
     Deck.add({
-      id: 'divide-conquer', title: 'Divide & Conquer', theme: 'theme-bs dc',
+      id: 'divide-conquer', music: 'carnival', title: 'Divide & Conquer', theme: 'theme-bs dc',
       steps: 4,
       build(r) {
         root = r;
@@ -223,7 +223,7 @@
     }
 
     Deck.add({
-      id: 'universe', title: 'How Big Can We Go?', theme: 'theme-space',
+      id: 'universe', music: 'space', title: 'How Big Can We Go?', theme: 'theme-space',
       steps: ROWS.length + 2,
       build(r) {
         root = r;
