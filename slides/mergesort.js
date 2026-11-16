@@ -18,7 +18,7 @@
 
   /* Every line Coach Halfway says. Keys map to assets/audio/voice/<key>.mp3 (see coach-lines.json). */
   const LINES = {
-    'coach/intro': "Okay team, line up! Let's merge sort, just like we did in class!",
+    'coach/intro': "Okay team, line up! Time to merge sort!",
     'coach/split': 'Split in half! Left team, right team!',
     'coach/split-2': "Halves of halves! That's quarters! Split again!",
     'coach/split-3': "Split again! Eighths! Everybody's on their own now!",
